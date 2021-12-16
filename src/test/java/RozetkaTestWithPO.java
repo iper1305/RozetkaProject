@@ -6,8 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class RozetkaTestWithPO {
@@ -29,33 +27,25 @@ public class RozetkaTestWithPO {
         Assert.assertEquals(rozetkaMainPageLogic.itemsInBlock.size(), 6);
 
         LinkedList<String> prices = rozetkaMainPageLogic.getPrices();
-        int tabNumber = 1;
+
+        int index = 0;
         for (var item : rozetkaMainPageLogic.getLinks()) {
-            ((JavascriptExecutor) driver).executeScript("window.open()");
-            WebDriver pageDriver = switchTabs(tabNumber);
-            pageDriver.get(item);
-            RozetkaProductPageLogic product = new RozetkaProductPageLogic(pageDriver, wait);
+            driver.get(item);
+            RozetkaProductPageLogic product = new RozetkaProductPageLogic(driver, wait);
 
             String price = product.getPrice();
-            Assert.assertEquals(prices.get(tabNumber - 1), price);
-            tabNumber++;
+            Assert.assertEquals(prices.get(index++), price);
+
+            driver.navigate().back();
         }
 
-        switchTabs(0);
-        driver.navigate().refresh();
-
-        Assert.assertEquals(rozetkaMainPageLogic.itemsInBlock.size(), 6);
+        RozetkaMainPageLogic rozetkaMainPageLogicAfterReturn = new RozetkaMainPageLogic(driver, wait, "Акционные предложения");
+        Assert.assertEquals(rozetkaMainPageLogicAfterReturn.itemsInBlock.size(), 6);
     }
 
     @AfterMethod
     public void afterTest() {
         driver.quit();
-    }
-
-    private WebDriver switchTabs(int index) {
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        WebDriver pageDriver = driver.switchTo().window(tabs.get(index));
-        return pageDriver;
     }
 }
 
