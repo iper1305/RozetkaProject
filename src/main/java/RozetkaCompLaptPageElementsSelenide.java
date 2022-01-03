@@ -5,6 +5,5 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class RozetkaCompLaptPageElementsSelenide {
-
     SelenideElement laptopTab = $(By.xpath("//a[@title='Ноутбуки']"));
 }

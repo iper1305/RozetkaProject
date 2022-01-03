@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class RozetkaCompLaptPageLogicSelenide extends RozetkaCompLaptPageElementsSelenide {
 
-    public RozetkaLaptPageLogicSelenide clickOnSubCategory (SelenideElement category) {
+    public RozetkaLaptPageLogicSelenide clickOnSubCategory(SelenideElement category) {
         category.shouldBe(Condition.visible);
         category.click();
         return page(RozetkaLaptPageLogicSelenide.class);

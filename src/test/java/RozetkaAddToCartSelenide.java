@@ -5,7 +5,6 @@ import com.codeborne.selenide.Configuration;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class RozetkaAddToCartSelenide {
@@ -32,7 +31,5 @@ public class RozetkaAddToCartSelenide {
         cartPageLogic.countItemInCart.shouldBe(Condition.visible);
         Assert.assertEquals(cartPageLogic.countItemInCart.getAttribute("value"), "1");
         Assert.assertEquals(laptopPageElements.item.getText().trim(), cartPageLogic.itemInCart.get(0).getText().trim());
-
-
     }
 }
