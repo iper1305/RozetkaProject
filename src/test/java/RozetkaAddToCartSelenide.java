@@ -18,7 +18,6 @@ public class RozetkaAddToCartSelenide {
     @Test
     public void firstTest() {
         RozetkaLaptPageElementsSelenide laptopPageElements = new RozetkaLaptPageElementsSelenide();
-
         RozetkaCartPageLogicSelenide cartPageLogic = new RozetkaMainPageLogicSelenide()
                 .clickOnCategory(new RozetkaMainPageElementsSelenide().laptopAndComputerTab)
                 .clickOnSubCategory(new RozetkaCompLaptPageElementsSelenide().laptopTab)
@@ -27,7 +26,6 @@ public class RozetkaAddToCartSelenide {
 
         cartPageLogic.itemInCart.shouldBe(CollectionCondition.size(1));
         Assert.assertEquals(cartPageLogic.itemInCart.size(), 1);
-
         cartPageLogic.countItemInCart.shouldBe(Condition.visible);
         Assert.assertEquals(cartPageLogic.countItemInCart.getAttribute("value"), "1");
         Assert.assertEquals(laptopPageElements.item.getText().trim(), cartPageLogic.itemInCart.get(0).getText().trim());
