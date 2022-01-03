@@ -29,5 +29,6 @@ public class RozetkaAddToCartSelenide {
         cartPageLogic.countItemInCart.shouldBe(Condition.visible);
         Assert.assertEquals(cartPageLogic.countItemInCart.getAttribute("value"), "1");
         Assert.assertEquals(laptopPageElements.item.getText().trim(), cartPageLogic.itemInCart.get(0).getText().trim());
+
     }
 }

@@ -9,10 +9,10 @@ public class RozetkaLaptPageLogicSelenide extends RozetkaLaptPageElementsSelenid
         addItemInButton.click();
         return this;
     }
-
     public RozetkaCartPageLogicSelenide clickOnCart(SelenideElement cartButton) {
         cartButton.shouldBe(Condition.visible);
         cartButton.click();
         return page(RozetkaCartPageLogicSelenide.class);
     }
+
 }
